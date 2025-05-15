@@ -57,4 +57,10 @@ public class LibrosServiceImpl implements LibrosService {
 		return libroDAO.aniadirDevolucion(id);
 	}
 
+	@Override
+	public boolean cambiarDisponible(int id) {
+	
+		return libroDAO.cambiarDisponible(id);
+	}
+
 }

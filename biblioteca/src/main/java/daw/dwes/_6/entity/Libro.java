@@ -27,9 +27,9 @@ public class Libro {
 	private String genero;
 	 
 	@Column(name = "disponible", nullable = false)
-	private boolean disponible;
+	private Boolean disponible;
 	 
-	public Libro(String titulo, String autor, String genero, boolean disponible) {
+	public Libro(String titulo, String autor, String genero, Boolean disponible) {
 		this.titulo = titulo;
 		this.autor = autor;
 		this.genero = genero;
@@ -71,11 +71,11 @@ public class Libro {
 		this.genero = genero;
 	}
 	
-	public boolean isDisponible() {
+	public Boolean getDisponible() {
 		return disponible;
 	}
 	
-	public void setDisponible(boolean disponible) {
+	public void setDisponible(Boolean disponible) {
 		this.disponible = disponible;
 	}
 

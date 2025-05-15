@@ -8,11 +8,13 @@ import jakarta.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import daw.dwes._6.entity.Libro;
 import daw.dwes._6.entity.Prestamo;
+import daw.dwes._6.exceptions.ApiExceptions;
 
 @Repository
 public class LibroDAOImpl implements LibroDAO {
@@ -32,16 +34,18 @@ public class LibroDAOImpl implements LibroDAO {
 		return libros;
 	}
 
+	// Devuelve todos los libros
 	@Override
 	@Transactional
 	public Libro getLibroById(int id) {
 		Session currentSession = entityManager.unwrap(Session.class);
-
+		
         Libro libro = currentSession.get(Libro.class, id);
 
         return libro;
 	}
 
+	// Devuelve un libro por su ID
 	@Override
 	@Transactional
 	public Libro aniadirLibro(Libro nuevoLibro) {
@@ -52,6 +56,7 @@ public class LibroDAOImpl implements LibroDAO {
 
 	}
 
+	// Modifica el libro que se le pasa por parametro
 	@Override
 	@Transactional
 	public Libro modificarLibro(Libro modLibro, int id) {
@@ -62,6 +67,7 @@ public class LibroDAOImpl implements LibroDAO {
 
 	}
 
+	// Borra el libro de la BBDD
 	@Override
 	@Transactional
 	public void borrarLibro(int id) {
@@ -70,10 +76,11 @@ public class LibroDAOImpl implements LibroDAO {
 		if (libro != null) {
 	        currentSession.remove(libro);
 	    } else {
-	        throw new RuntimeException("Libro con id " + id + " no encontrado");
+	    	throw new ApiExceptions(HttpStatus.NOT_FOUND, "Libro con id " + id + " no encontrado");
 	    }
 	}
 
+	// Crea un nuevo prestamo en la BBDD
 	@Override
 	@Transactional
 	public Prestamo crearPrestamo(int id) {
@@ -88,16 +95,48 @@ public class LibroDAOImpl implements LibroDAO {
 
 	}
 
+	// Añade la fecha de devolucion a un prestamo ya existente
 	@Override
 	@Transactional
 	public Prestamo aniadirDevolucion(int id) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		Prestamo prestamo = currentSession.get(Prestamo.class, id);
-		prestamo.setFecha_fin(LocalDate.now());
 		
+		if (prestamo == null) {
+	        throw new ApiExceptions(HttpStatus.NOT_FOUND, "Préstamo con id " + id + " no encontrado");
+	    }
+		if(prestamo.getFecha_devolucion() != null) {
+			throw new ApiExceptions(HttpStatus.BAD_REQUEST, "La devolución ya ha sido procesada para el préstamo con id " + id);
+		}
+		
+		prestamo.setFecha_devolucion(LocalDate.now());		
 		currentSession.merge(prestamo);
 		
 		return prestamo;
+	}
+
+	// Cambia la disponibilidad de un libro 
+	@Override
+	@Transactional
+	public boolean cambiarDisponible(int id) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		Libro libro = currentSession.get(Libro.class, id);
+		//Libro libro = entityManager.find(Libro.class, id);
+		
+		if (libro == null) {
+	        throw new ApiExceptions(HttpStatus.NOT_FOUND, "Libro con id " + id + " no encontrado");
+	    }
+		// Cambiar disponibilidad
+		libro.setDisponible(!libro.getDisponible());
+		
+		
+        // Guardar los cambios en la base de datos
+        currentSession.merge(libro);
+        currentSession.flush();
+
+	    
+	    
+	    return true;
 	}
 }

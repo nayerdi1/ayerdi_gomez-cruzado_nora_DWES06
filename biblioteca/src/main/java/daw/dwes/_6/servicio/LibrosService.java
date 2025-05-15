@@ -20,4 +20,6 @@ public interface LibrosService {
 	public Prestamo crearPrestamo(int id);
 	
 	public Prestamo aniadirDevolucion(int id);
+	
+	public boolean cambiarDisponible(int id);
 }
