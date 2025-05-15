@@ -13,12 +13,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/Laravel/public/api/libros",
+					"raw": "http://localhost/ayerdi_gomez-cruzado_nora_DWES06-main/Laravel/public/api/libros",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
+						"ayerdi_gomez-cruzado_nora_DWES06-main",
 						"Laravel",
 						"public",
 						"api",
@@ -34,12 +35,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/Laravel/public/api/libros/14",
+					"raw": "http://localhost/ayerdi_gomez-cruzado_nora_DWES06-main/Laravel/public/api/libros/14",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
+						"ayerdi_gomez-cruzado_nora_DWES06-main",
 						"Laravel",
 						"public",
 						"api",
@@ -222,13 +224,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/DWES06-proyectoLaravel/public/api/prestamo",
+					"raw": "http://localhost/ayerdi_gomez-cruzado_nora_DWES06-main\\Laravel/public/api/prestamo",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"DWES06-proyectoLaravel",
+						"ayerdi_gomez-cruzado_nora_DWES06-main",
+						"Laravel",
 						"public",
 						"api",
 						"prestamo"
@@ -244,17 +247,18 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/DWES06-proyectoLaravel/public/api/devolucion/9",
+					"raw": "http://localhost/ayerdi_gomez-cruzado_nora_DWES06-main\\Laravel/public/api/devolucion/8",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"DWES06-proyectoLaravel",
+						"ayerdi_gomez-cruzado_nora_DWES06-main",
+						"Laravel",
 						"public",
 						"api",
 						"devolucion",
-						"9"
+						"8"
 					]
 				}
 			},
