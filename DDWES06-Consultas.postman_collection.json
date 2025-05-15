@@ -13,13 +13,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/DWES06-proyectoLaravel/public/api/libros",
+					"raw": "http://localhost/Laravel/public/api/libros",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"DWES06-proyectoLaravel",
+						"Laravel",
 						"public",
 						"api",
 						"libros"
@@ -34,17 +34,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/DWES06-proyectoLaravel/public/api/libros/142",
+					"raw": "http://localhost/Laravel/public/api/libros/14",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"DWES06-proyectoLaravel",
+						"Laravel",
 						"public",
 						"api",
 						"libros",
-						"142"
+						"14"
 					]
 				}
 			},
@@ -82,13 +82,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/DWES06-proyectoLaravel/public/api/create",
+					"raw": "http://localhost/Laravel/public/api/create",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"DWES06-proyectoLaravel",
+						"Laravel",
 						"public",
 						"api",
 						"create"
